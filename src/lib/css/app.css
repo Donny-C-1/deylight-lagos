@@ -1,0 +1,54 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--available: #059669;
+	--fluctuating: #d97706;
+	--outage: #c1121f;
+
+	/* The Status Colors (Core Utility) */
+	--nepa-green: #2d6a4f; /* "Light Dey" - Stable/Deep Green */
+	--voltage-yellow: #ffb703; /* "I Go, I Come" - Alert/Warning Yellow */
+	--outage-red: #c1121f; /* "Up NEPA" - Urgent/Outage Red */
+
+	/* The UI Foundation (Lagos Concrete & Sky) */
+	--concrete-white: #f8f9fa; /* Background - Clean but not blinding */
+	--asphalt-grey: #343a40; /* Text/Icons - Deep Graphite */
+	--electric-blue: #0077b6; /* Action/Buttons - Reliable Blue */
+	--ivory: #f6f3ec;
+
+	/* Implementation Variables */
+	--background: var(--concrete-white);
+	--foreground: var(--asphalt-grey);
+
+	/* Branding */
+	--primary: var(--nepa-green);
+	--primary-foreground: #ffffff;
+
+	--secondary: var(--ivory);
+
+	--tertiary: #f1f5f9;
+
+	/* Details & Borders */
+	--card-bg: #ffffff;
+	--border: rgba(52, 58, 64, 0.1); /* Subtle Asphalt */
+	--muted: #6c757d; /* Grey for "last updated" text */
+
+	/* Accent for Interactive Elements */
+	--accent: var(--electric-blue);
+}
+
+body {
+    font-family: "Inter", "Segoi-UI", 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 400;
+    background-color: var(--background);
+    color: var(--foreground);
+}
