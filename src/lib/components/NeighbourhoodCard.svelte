@@ -4,7 +4,7 @@
 
 	let { neighbourhood } = $props();
 
-	let currentStatus = $state(neighbourhood.status);
+	let currentStatus = $derived(neighbourhood.status);
 	let isUpdating = $state(false);
 
 	async function updateStatus(newStatus) {
@@ -30,7 +30,7 @@
 	}
 </script>
 
-<div class="card {neighbourhood.status}">
+<div class="card {currentStatus}">
 	<div class="header">
 		<div class="header_info">
 			<h3>{neighbourhood.feeder_name}</h3>
@@ -67,6 +67,7 @@
 		display: flex;
 		flex-direction: column;
 		background-color: var(--card-bg);
+		background-color: color-mix(in srgb, var(--card-color) 10%, transparent 90%);
 		border: 1px solid var(--card-color, var(--border));
 		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 		border-radius: 0.5rem;
@@ -75,6 +76,14 @@
     .card.available {
         --card-color: var(--available);
     }
+
+	.card.fluctuating {
+		--card-color: var(--fluctuating);
+	}
+
+	.card.outage {
+		--card-color: var(--outage);
+	}
 
 	.header {
 		display: flex;
