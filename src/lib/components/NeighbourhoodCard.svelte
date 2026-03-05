@@ -5,6 +5,7 @@
 	let { neighbourhood } = $props();
 
 	let currentStatus = $derived(neighbourhood.status);
+	let lastUpdated = $derived(neighbourhood.last_updated);
 	let isUpdating = $state(false);
 
 	async function updateStatus(newStatus) {
@@ -17,14 +18,16 @@
 
 		const { error } = await supabase
 			.from("neighbourhoods")
-			.update({ status: newStatus, last_updated: new Date().toISOString() })
+			.update({ status: newStatus })
             .eq("id", neighbourhood.id);
 
         if (error) {
             console.error("Update Failed:", error);
             currentStatus = previousStatus;
             alert("Failed to update status. Please try again");
-        }
+        } else {
+			lastUpdated = new Date().toISOString();
+		}
 
         isUpdating = false;
 	}
@@ -50,7 +53,7 @@
 					Status: <span class="status_value">{neighbourhood.status || "No Report"}</span>
 				</p>
 				<p class="last_verified">
-					Verified {formatTimestamp(new Date(neighbourhood.last_updated))}
+					Verified {formatTimestamp(new Date(lastUpdated))}
 				</p>
 			</div>
 		</div>
