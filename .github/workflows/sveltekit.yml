@@ -73,8 +73,8 @@ jobs:
       - name: Build with SvelteKit
         run: ${{ steps.detect-package-manager.outputs.runner }} npm run build
         env:
-          PUBLIC_SUPABASE_URL: ${{ secrets.PUBLIC_SUPABASE_URL }}
-          PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY: ${{ PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY }}
+          PUBLIC_SUPABASE_URL: ${{ vars.PUBLIC_SUPABASE_URL }}
+          PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY: ${{ vars.PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY }}
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
